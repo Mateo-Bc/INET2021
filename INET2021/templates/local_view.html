@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+<div class='container' >
+    <div class="row" style="background-color: greenyellow;">
+        <div class="col-6 offset-3 align-self-center namePanel">
+            {{nomvre}}
+        </div>
+    </div>
+
+    <div class="row align-items-center;">
+        <div class="col-6" style="background-color: greenyellow">
+            <h1>Capacidad Actual</h1>
+            {{ac_cap}}
+        </div>
+
+        <div class="col-6" style="background-color: aquamarine;">
+            {{max_cap}}
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}
