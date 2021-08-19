@@ -5,5 +5,11 @@
 }
 
 .leftPanel {
+    background-color: greenyellow;
+
+}
+
+.rightPanel {
+    background-color: aquamarine;
 
 }

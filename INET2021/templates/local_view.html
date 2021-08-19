@@ -3,22 +3,29 @@
 {%block content%}
 
 <div class='container' >
-    <div class="row" style="background-color: greenyellow;">
+    <div class="row">
         <div class="col-6 offset-3 align-self-center namePanel">
             {{nomvre}}
         </div>
     </div>
 
-    <div class="row align-items-center;">
-        <div class="col-6" style="background-color: greenyellow">
+    <div class="row align-items-center">
+        <div class="col-6 leftPanel">
             <h1>Capacidad Actual</h1>
             {{ac_cap}}
         </div>
 
-        <div class="col-6" style="background-color: aquamarine;">
+        <div class="col-6 rightPanel">
+            <h1>Capacidad Máccima</h1>
             {{max_cap}}
         </div>
 
+    </div>
+
+    <div class="row">
+        <div class="col-12 align-self-center">
+            {{nomvre}}
+        </div>
     </div>
 </div>
 

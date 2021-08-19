@@ -2,10 +2,18 @@ from django.db import models
 
 # Create your models here.
 
+class Manager(models.Model):
+    nomvre = models.CharField(max_length=100, default=None)
+
+    def __str__(self):
+        return self.nomvre
+
 class Local(models.Model):
     nomvre = models.CharField(max_length=100, default=None)
     max_cap = models.IntegerField()
     ac_cap = models.IntegerField()
+    address = models.CharField(max_length=100, default=None)
+    manager = models.ForeignKey(Manager, on_delete=models.CASCADE, null=True)
 
     def sum_hernesto(self):
         if (self.ac_cap < self.max_cap):
