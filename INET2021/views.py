@@ -30,6 +30,7 @@ def Local_View(request, pk):
         'max_cap': local.max_cap,
         'ac_cap': local.ac_cap,
         'direccion': local.address,
+        'percentage': local.percentage,
 
     }
     return render(request, 'local_view.html' , context)

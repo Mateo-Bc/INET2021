@@ -92,12 +92,17 @@
     background-color: darkorange;
 }
 
-.leftPanel {
+.leftPanelgreen {
     background-color: greenyellow;
-
+}
+.leftPanelorange {
+    background-color: darkorange;
+}
+.leftPanelred {
+    background-color: crimson;
 }
 
 .rightPanel {
-    background-color: aquamarine;
-
+    background-color: beige;
 }
+

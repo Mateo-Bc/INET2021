@@ -3,21 +3,26 @@
 {%block content%}
 
 <div class='container'>
-    <div class="row">
+    <div class="row ">
         <div class="col-6 offset-3 align-self-center namePanel">
-            {{nomvre}}
+            <h2>{{nomvre}}</h2>
         </div>
     </div>
 
     <div class="row align-items-center">
-        <div class="col-6 leftPanel">
-            <h1>Capacidad Actual</h1>
-            {{ac_cap}}
-        </div>
-
-        <div class="col-6 rightPanel">
+        {% if percentage <= 0.5 %}
+            <div class="col-6 leftPanelgreen rounded border border-dark">
+        {% elif percentage <= 0.5 %}
+            <div class="col-6 leftPanelorange rounded border border-dark">
+        {% else %}
+            <div class="col-6 leftPanelred rounded border border-dark">
+        {% endif %}
+                <h1>Capacidad Actual</h1>
+                <h3 class="text-center display-2">{{ac_cap}}</h3>
+            </div>
+        <div class="col-6 rightPanel     rounded border border-dark">
             <h1>Capacidad Máxima</h1>
-            {{max_cap}}
+            <h3 class="text-center display-2">{{max_cap}}</h3>
         </div>
 
     </div>
