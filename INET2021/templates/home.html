@@ -1,8 +1,58 @@
 {% extends 'base.html'%}
 {%load static%}
 {%block content%}
-<h1>hhhhhhh</h1>
-{%for local in locals%}
-<h1>{{local.nomvre}}</h1>
+
+<div class='container-fluid searchContainer'>
+    <div class="row">
+            
+        <div class="col titleBox">
+            <a>OLIMPIADAS - INET 2021</a>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-md-center searchBox">
+        <form method="get">
+
+            <div class="col-10 justify-content-md-center searchBarContainer">
+                <input type="text" class="form-control searchBar" value="{{ search }}" placeholder="Buscar locales por nombre o dirección..." name="buscar">
+                <span class="input-group-list">
+                    <button type="submit" class="boton btn-success searchButton">Buscar</button>
+                </span>
+            </div>
+
+        </form>
+    </div>
+    
+</div>
+
+<br>
+
+{%for local in locales%}
+
+<div class='container-fluid listComponent'>
+    <div class="row">
+            
+        <div class="col-1">
+            <b class="listID">{{local.id}}.</b>
+        </div>
+
+        <div class="col-8">
+            <div class="row listName">
+                <a>{{local.nomvre}}</a>
+            </div>
+            <div class="row listAddress">
+                <a>{{local.address}}</a>
+            </div>
+        </div>
+
+        <div class="col-1 ml-auto">
+            <a href="{% url 'local_view' local.id %}"><img class="listArrow" src="../../static/img/RightArrow.png"></a>
+        </div>
+
+    </div>
+</div>
+
 {%endfor%}
+
 {%endblock%}
