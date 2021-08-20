@@ -20,6 +20,7 @@ class Local(models.Model):
     def cal_percentage(self):
         self.percentage = self.ac_cap / self.max_cap
         print(self.percentage)
+        return self.percentage
 
     def __str__(self):
         self.cal_percentage()
