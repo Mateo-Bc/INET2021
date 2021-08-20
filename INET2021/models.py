@@ -15,15 +15,12 @@ class Local(models.Model):
     ac_cap = models.IntegerField()
     address = models.CharField(max_length=100, default=None)
     manager = models.ForeignKey(Manager, on_delete=models.CASCADE, null=True)
-    percentage = models.FloatField(default=None)
 
     def cal_percentage(self):
-        self.percentage = self.ac_cap / self.max_cap
-        print(self.percentage)
-        return self.percentage
+        percentage = self.ac_cap / self.max_cap
+        return percentage
 
     def __str__(self):
-        self.cal_percentage()
         return self.nomvre
 
     def sum_hernesto(self):
