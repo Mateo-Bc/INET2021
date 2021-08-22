@@ -2,6 +2,8 @@
 {%load static%}
 {%block content%}
 
+{% if request.user.is_authenticated %}
+
 <div class='container-fluid searchContainer'>
     <div class="row">
             
@@ -28,6 +30,8 @@
 
 <br>
 
+
+
 {%for local in locales%}
 
 <div class='container-fluid listComponent'>
@@ -39,7 +43,7 @@
 
         <div class="col-8">
             <div class="row listName">
-                <a>{{local.nomvre}}</a>
+                <a>{{local.name}}</a>
             </div>
             <div class="row listAddress">
                 <a>{{local.address}}</a>
@@ -53,6 +57,59 @@
     </div>
 </div>
 
+{% empty %}
+
+<div class='container-fluid emptyListComponent'>
+    <div class="row">
+            
+        <div class="col-1">
+            <b class="listID">?</b>
+        </div>
+
+        <div class="col-8">
+            <div class="row listName">
+                <a>No hay locales disponibles para la vista...</a>
+            </div>
+            <div class="row listAddress">
+                <a>nasheeeee</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 {%endfor%}
+
+{% else %}
+
+
+<div class='container-fluid searchContainer'>
+    <div class="row justify-content-md-center">
+            
+        <div class="titleBox">
+            <a>OLIMPIADAS - INET 2021</a>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-md-center searchBox">
+
+        <div class="col-12">
+            <div class="row justify-content-md-center">
+                <a>Iniciar sesión en el sistema para comprobar registros.</a>
+            </div>
+            <br>
+            <div class="row justify-content-md-center">
+                <span class="input-group-list">
+                    <button onclick="location.href = '/login'" class="boton btn-success">Iniciar Sesión</button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+{% endif %}
 
 {%endblock%}

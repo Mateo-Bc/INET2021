@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+<div class="container-fluid registryPanel">
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="titleBox">
+            <a>Inicio de sesión</a>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" name="username" placeholder="Username..." class="form-control">
+        </div>
+
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+                <input type="password" name="password" placeholder="Password..." class="form-control" >
+        </div>
+
+        <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit" id="submit" value="Login" class="btn-success">Iniciar Sesión</button>  
+        </div>
+        <br>
+    </form>
+
+</div>
+
+{%endblock%}

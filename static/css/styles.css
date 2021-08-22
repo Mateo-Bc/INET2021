@@ -5,6 +5,16 @@
     background-position: center center;
 }
 
+.registryPanel{
+    width: 60%;
+    height: 100%;
+    margin-top: 15vw;
+    background-color: rgba(253, 220, 176, 0.7);
+    border: 3px solid tan;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+}
+
 .searchContainer{
     margin-top: 2%;
     height: 8vw;
@@ -14,7 +24,7 @@
 }
 
 .titleBox{
-    height: 4vw;
+    height: 40%;
     font-size: 3vw;
     text-align: center;
 }
@@ -44,7 +54,15 @@
     height: 170%;
 }
 
-
+.emptyListComponent{
+    width: 60%;
+    height: 100%;
+    margin-bottom: 2%;
+    background-color: rgba(253, 220, 176, 0.7);
+    border: 3px dashed black;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+}
 
 .listComponent{
     width: 60%;
