@@ -1,0 +1,126 @@
+.bgImg{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.registryPanel{
+    width: 60%;
+    height: 100%;
+    margin-top: 15vw;
+    background-color: rgba(253, 220, 176, 0.7);
+    border: 3px solid tan;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.searchContainer{
+    margin-top: 2%;
+    height: 8vw;
+    width: 50%;
+
+    font-family: 'Quicksand', sans-serif;
+}
+
+.titleBox{
+    height: 40%;
+    font-size: 3vw;
+    text-align: center;
+}
+
+.searchBox{
+    height: 4vw;
+}
+
+.searchBarContainer{
+    display: flex;
+    align-items: center;
+}
+
+.searchBar{
+    padding-left: 1vw;
+    font-size: 1vw;
+    height: 70%;
+}
+
+.searchButtonContainer{
+    display: flex;
+    align-items: center
+}
+
+.searchButton{
+    font-size: 1vw;
+    height: 170%;
+}
+
+.emptyListComponent{
+    width: 60%;
+    height: 100%;
+    margin-bottom: 2%;
+    background-color: rgba(253, 220, 176, 0.7);
+    border: 3px dashed black;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.listComponent{
+    width: 60%;
+    height: 100%;
+    margin-bottom: 2%;
+    background-color: rgb(253, 220, 176);
+    border: 3px solid tan;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.listID{
+    font-size: 3.6vw;
+}
+
+.listName{
+    font-size: 2vw;
+    height:70%;
+    padding-left: 5%;
+    white-space: nowrap;
+    align-items: center;
+}
+
+.listAddress{
+    font-size: 1vw;
+    height:30%;
+    padding-left: 5%;
+    white-space: nowrap;
+    align-items: center;
+}
+
+.listArrow{
+    width:2vw;
+    margin-top: 42%;
+    vertical-align: middle;
+}
+.listArrow:hover{
+    filter: opacity(50%);
+    transition: all .1s linear;
+}
+
+.namePanel{
+    text-align: center;
+    size: 15%;
+    background-color: darkorange;
+}
+
+.leftPanelgreen {
+    background-color: greenyellow;
+}
+.leftPanelorange {
+    background-color: darkorange;
+}
+.leftPanelred {
+    background-color: crimson;
+}
+
+.rightPanel {
+    background-color: beige;
+}
+
