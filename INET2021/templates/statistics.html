@@ -9,8 +9,56 @@
 
 <div class='container' >
     <div class="row align-items-center;">
+        <div class="col 12">
+            <div id="graphics" class="col 12">
+                <div class="row">
+                    <div id="graphic1" class="col 10"><canvas id="gr"></canvas> </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
 
 {%endblock%}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+                        var ctx = document.getElementById('gr').getContext('2d');
+                        const labels = [1   ]
+                        const data = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Flujo de gente',
+                            data: [1],
+                            borderColor: 'rgba(0,0,0,0.8)',
+                            tension: 0.1
+                        },]
+                        };
+                        const config = {
+                            type: 'line',
+                            data: data,
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                scales: {
+                                    x: {
+                                        display: true,
+                                        title: 'hora'
+                                    },
+                                    y: {
+                                        display: true,
+                                        title: 'cantidad'
+
+                                    }
+                                }
+                            }
+                        };
+                        var myChart = new Chart(ctx,config)
+    </script>
+{% endblock %}
