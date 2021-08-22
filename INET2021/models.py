@@ -17,7 +17,7 @@ class Local(models.Model):
     max_cap = models.IntegerField()
     ac_cap = models.IntegerField()
     address = models.CharField(max_length=100, default=None)
-    manager = models.ForeignKey(Manager, on_delete= models.CASCADE, null=True)
+    manager = models.ForeignKey(Manager, on_delete= models.CASCADE)
     time = models.ManyToManyField(Time,null=True)
 
 
