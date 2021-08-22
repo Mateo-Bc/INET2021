@@ -6,6 +6,7 @@ from .forms import *
 from django.db.models import Q
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+import datetime
 
 # Create your views here.
 
@@ -46,16 +47,25 @@ def HomeView(request):
     return render(request, 'home.html' , context)
 
 def Local_View(request, pk):
+    now = datetime.datetime.now()
     local = Local.objects.get(pk = pk)
-    hora = Time.objects.create('01:00',0)
-    local.time.add(hora)
-    print(local.time)
+
+    current_hour = str(now.hour) + ":00"
+    try:
+        a = local.time.get(hour=current_hour)
+    except:
+        t = Time.objects.create(hour=current_hour,cant=0)
+        local.time.add(t)
+        local.save()
+        a = local.time.get(hour=current_hour)
+
     if request.method == "POST":
         cap = CalculateCap(request.POST)
         if cap.is_valid():
             if cap.cleaned_data.get('option'):
                 if local.ac_cap < local.max_cap:
-
+                    a.cant +=1
+                    a.save()
                     local.ac_cap += 1
                     local.save()
 
@@ -70,7 +80,7 @@ def Local_View(request, pk):
         'max_cap': local.max_cap,
         'ac_cap': local.ac_cap,
         'direccion': local.address,
-        'percentage': local.cal_percentage(),
+        'percentage': local.call_percentage(),
         'form':cap,
 
     }

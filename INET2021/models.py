@@ -10,8 +10,11 @@ class Manager(models.Model):
         return self.first_name + " " + self.last_name
 
 class Time(models.Model):
-    hour = models.TimeField()
+    hour = models.TimeField(auto_created=True)
     cant = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.hour) + str(self.cant)
 
 class Local(models.Model):
     name = models.CharField(max_length=100, default=None)

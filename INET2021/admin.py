@@ -10,3 +10,4 @@ class ManagerAdmin(admin.ModelAdmin):
 
 admin.site.register(Local, LocalAdmin)
 admin.site.register(Manager, ManagerAdmin)
+admin.site.register(Time)
