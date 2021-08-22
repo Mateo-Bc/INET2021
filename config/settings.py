@@ -124,8 +124,4 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,'/staticfiles/')
 
-<<<<<<< HEAD
 LOGIN_REDIRECT_URL = 'homeView'
-=======
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
->>>>>>> 7c844624b362da33c4a9df1aa2a2d594a9cd75f5
