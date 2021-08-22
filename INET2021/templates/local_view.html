@@ -32,6 +32,11 @@
             {{nomvre}}
         </div>
     </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button onclick="" type="submit">SUMAR</button>
+    </form>
 </div>
 
 {%endblock%}

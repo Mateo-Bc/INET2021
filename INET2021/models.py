@@ -8,13 +8,18 @@ class Manager(models.Model):
     def __str__(self):
         return self.nomvre
 
+class Time(models.Model):
+    hour = models.TimeField(null=True)
+    cant = models.IntegerField(default=0)
 
 class Local(models.Model):
     nomvre = models.CharField(max_length=100, default=None)
     max_cap = models.IntegerField()
     ac_cap = models.IntegerField()
     address = models.CharField(max_length=100, default=None)
-    manager = models.ForeignKey(Manager, on_delete=models.CASCADE, null=True)
+    manager = models.ForeignKey(Manager, on_delete= models.CASCADE, null=True)
+    time = models.ManyToManyField(Time,null=True)
+
 
     def cal_percentage(self):
         percentage = self.ac_cap / self.max_cap
@@ -38,8 +43,7 @@ class Local(models.Model):
         self.cal_percentage()
 
 
-class Time(models.Model):
-    date = models.DateField()
+
 
 
 
