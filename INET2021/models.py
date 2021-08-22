@@ -21,7 +21,7 @@ class Local(models.Model):
     max_cap = models.IntegerField()
     ac_cap = models.IntegerField()
     address = models.CharField(max_length=100, default=None)
-    manager = models.ForeignKey(Manager, on_delete= models.CASCADE)
+    manager = models.ForeignKey(Manager, on_delete= models.CASCADE,blank=True)
     time = models.ManyToManyField(Time)
 
     def call_percentage(self):

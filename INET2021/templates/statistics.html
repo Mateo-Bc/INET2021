@@ -30,12 +30,12 @@
 
     <script>
                         var ctx = document.getElementById('gr').getContext('2d');
-                        const labels = [1   ]
+                        const labels = [{% for i in times  %} {{ i.hour.hour }}, {% endfor %}]
                         const data = {
                         labels: labels,
                         datasets: [{
                             label: 'Flujo de gente',
-                            data: [1,2],
+                            data: [{% for i in times  %} {{i.cant}}, {% endfor %}],
                             borderColor: 'rgba(0,0,0,0.8)',
                             tension: 0.1
                         },]

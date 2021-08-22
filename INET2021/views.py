@@ -88,6 +88,11 @@ def Local_View(request, pk):
 
 def Statistics_View(request, pk):
     local = Local.objects.get(pk = pk)
+    a = local.time.all()
+    for i in a:
+        print(type(i.hour.hour))
+    print(local.time.all())
     context = {
+        'times':a,
     }
     return render(request, 'statistics.html' , context)
