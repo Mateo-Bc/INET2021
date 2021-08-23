@@ -7,7 +7,6 @@
         <div class="col-md-auto">
             <button onclick="location.href = '/'" class="boton btn-success">Return to Home</button>
         </div>
-        {{ aa }}
         <div class="row justify-content-end" style="margin-right: 0.1vw">
             {% if request.user.is_authenticated %}
             <div class="col-md-auto">
@@ -90,6 +89,63 @@
             <a>ads</a>
             <img>
         </div>
+    </div>
+
+    <div>
+        {% if request.user.username == luse or user.is_superuser %}
+
+        <div class='container-fluid' >
+            <div class="row align-items-center;">
+                <div class="col 12">
+                    <div id="graphics" class="col 12">
+                        <div class="row">
+                            <div id="graphic1" class="col 10"><canvas id="gr"></canvas> </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            var ctx = document.getElementById('gr').getContext('2d');
+            const labels = [{% for i in times  %} {{ i.hour.hour }}, {% endfor %}]
+            const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Flujo de gente',
+                data: [{% for i in times  %} {{i.cant}}, {% endfor %}],
+                borderColor: 'rgba(0,0,0,0.8)',
+                tension: 0.1
+            },]
+            };
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: 'hora'
+                        },
+                        y: {
+                            display: true,
+                            title: 'cantidad'
+
+                        }
+                    }
+                }
+            };
+            var myChart = new Chart(ctx,config)
+        </script>
+
+        {% endif %}
     </div>
 
 </div>

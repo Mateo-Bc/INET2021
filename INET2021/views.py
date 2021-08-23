@@ -88,25 +88,6 @@ def Local_View(request, pk):
                 local.ac_cap -= 1
                 local.save()
 
-        """
-        if cap.is_valid():
-            if cap.cleaned_data.get('option'):
-                if local.ac_cap < local.max_cap:
-                    a.cant +=1
-                    a.save()
-                    print(a.cant)
-                    local.ac_cap += 1
-                    local.save()
-
-                    if local.ac_cap == local.max_cap:
-                        messages.warning(request, 'The store has reached its maxium capacity.')
-
-            else:
-                if local.ac_cap > 0:
-                    local.ac_cap -= 1
-                    local.save()
-        """
-
     else:
         cap = CalculateCap()
     context = {
@@ -116,21 +97,8 @@ def Local_View(request, pk):
         'direccion': local.address,
         'percentage': local.call_percentage(),
         'form':cap,
-        'aa':current_hour
+        'times':local.time.all(),
+        'luse':local.manager.username,
 
     }
     return render(request, 'local_view.html' , context)
-
-@login_required(login_url='LoginView')
-def Statistics_View(request):
-    try:
-        man = Manager.objects.get(username=request.user.username)
-        local = Local.objects.get(manager=man)
-        a = local.time.all()
-    except:
-        return redirect('/')
-
-    context = {
-        'times':a,
-    }
-    return render(request, 'statistics.html' , context)
