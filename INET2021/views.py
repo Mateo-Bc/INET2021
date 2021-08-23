@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .form import CalculateCap
 from .models import *
 from .forms import *
-from django.db.models import Q
+from django.db.models import Q  
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -17,11 +17,11 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['username']
 
+            username = form.cleaned_data['username']
             firstname = form.cleaned_data['first_name']
             lastname = form.cleaned_data['last_name']
-            new = Manager.objects.create(first_name=firstname,last_name=lastname)
+            new = Manager.objects.create(first_name=firstname,last_name=lastname,username=username)
             new.save()
 
             messages.success(request, f'Usuario {username} creado')
@@ -59,26 +59,16 @@ def Local_View(request, pk):
     local = Local.objects.get(pk = pk)
 
     for i in range(24):
-        """print("hola")"""
         try:
-            """print("1")"""
             hora = str(i) + ":00"
             local.time.get(hour=hora)
         except:
-            """print("2")"""
             hora = str(i) + ":00"
             t = Time.objects.create(hour=hora, cant=0)
             local.time.add(t)
             local.save()
 
     current_hour = str(now.hour) + ":00"
-    """try:
-        print(local.time.filter(hour=current_hour))
-        a = local.time.get(hour=current_hour)
-    except:
-        t = Time.objects.create(hour=current_hour,cant=0)
-        local.time.add(t)
-        local.save()"""
     a = local.time.get(hour=current_hour)
 
     if request.method == "POST":
@@ -126,19 +116,20 @@ def Local_View(request, pk):
         'direccion': local.address,
         'percentage': local.call_percentage(),
         'form':cap,
+        'aa':current_hour
 
     }
     return render(request, 'local_view.html' , context)
 
 @login_required(login_url='LoginView')
 def Statistics_View(request):
-    man = Manager.objects.get(first_name=request.user.first_name)
-    local = Local.objects.filter(manager=man)
     try:
+        man = Manager.objects.get(username=request.user.username)
+        local = Local.objects.get(manager=man)
         a = local.time.all()
     except:
-        nombre = "local de " + request.user.first_name
-        loc = Local.objects.create(name=nombre,max_cap=10,ac_cap=0,address="None",manager=man)
+        return redirect('/')
+
     context = {
         'times':a,
     }

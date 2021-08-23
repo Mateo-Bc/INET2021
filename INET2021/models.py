@@ -6,6 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Manager(models.Model):
     first_name = models.CharField(max_length=100, default=None)
     last_name = models.CharField(max_length=100, default=None)
+    username = models.CharField(max_length=100, default=None)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
