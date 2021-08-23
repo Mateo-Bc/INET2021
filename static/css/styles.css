@@ -8,11 +8,39 @@
 .registryPanel{
     width: 60%;
     height: 100%;
-    margin-top: 15vw;
+    margin-top: 5vw;
     background-color: rgba(253, 220, 176, 0.7);
     border: 3px solid tan;
     border-radius: 1.5vw;
     font-family: 'Quicksand', sans-serif;
+}
+
+.loginPanel{
+    width: 60%;
+    height: 100%;
+    margin-top: 10vw;
+    background-color: rgba(253, 220, 176, 0.7);
+    border: 3px solid tan;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.logOptions{
+    margin-top: 1vw;
+}
+
+.errorBox{
+    width: 30%;
+    height: 20%;
+
+    background-color: rgba(255, 40, 40, 0.7);
+    border: 3px solid red;
+    border-radius: 1.5vw;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 100%;
+    color: red;
+    text-align: center;
 }
 
 .searchContainer{
@@ -59,7 +87,7 @@
     height: 100%;
     margin-bottom: 2%;
     background-color: rgba(253, 220, 176, 0.7);
-    border: 3px dashed black;
+    border: 2px dashed black;
     border-radius: 1.5vw;
     font-family: 'Quicksand', sans-serif;
 }

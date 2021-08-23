@@ -2,7 +2,27 @@
 {%load static%}
 {%block content%}
 
-{% if request.user.is_authenticated %}
+<div class="container-fluid">
+    <div class="row justify-content-end logOptions">
+        {% if request.user.is_authenticated %}
+            <div class="col-md-auto">
+                <a class="listAddress">¡Welcome back, {{user}}!</a>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="location.href = '/logout'" class="boton btn-success">Log Out</button>
+            </div>      
+        {% else %}
+            <div class="col-md-auto">
+                <button onclick="location.href = '/login'" class="boton btn-success">Log In</button>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="location.href = '/register'" class="boton btn-success">Register</button>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
 
 <div class='container-fluid searchContainer'>
     <div class="row">
@@ -79,37 +99,5 @@
 </div>
 
 {%endfor%}
-
-{% else %}
-
-
-<div class='container-fluid searchContainer'>
-    <div class="row justify-content-md-center">
-            
-        <div class="titleBox">
-            <a>OLIMPIADAS - INET 2021</a>
-        </div>
-
-    </div>
-
-    <div class="row justify-content-md-center searchBox">
-
-        <div class="col-12">
-            <div class="row justify-content-md-center">
-                <a>Iniciar sesión en el sistema para comprobar registros.</a>
-            </div>
-            <br>
-            <div class="row justify-content-md-center">
-                <span class="input-group-list">
-                    <button onclick="location.href = '/login'" class="boton btn-success">Iniciar Sesión</button>
-                </span>
-            </div>
-        </div>
-
-    </div>
-    
-</div>
-
-{% endif %}
 
 {%endblock%}

@@ -2,13 +2,13 @@
 {%load static%}
 {%block content%}
 
-<div class="container-fluid registryPanel">
+<div class="container-fluid loginPanel">
 
     <form method="POST" action="">
         {% csrf_token %}
 
         <div class="titleBox">
-            <a>Inicio de sesión</a>
+            <a>Log In</a>
         </div>
 
         <div class="input-group mb-3">
@@ -26,11 +26,25 @@
         </div>
 
         <div class="d-flex justify-content-center mt-3 login_container">
-            <button type="submit" id="submit" value="Login" class="btn-success">Iniciar Sesión</button>  
+            <button type="submit" id="submit" value="Login" class="btn-success">Log In</button>  
         </div>
+
+        <div class="d-flex justify-content-center mt-3 login_container">
+            <a>Don't have an account yet?</a><a style="margin-left: 5px" href='/register'>Register</a>
+        </div>
+
         <br>
     </form>
 
 </div>
+
+<br>
+
+{% if form.errors %}
+    <div class="container-fluid errorBox">
+        <a>Error !</a>
+        <a>{{form.non_field_errors}}</a>
+    </div>
+{% endif %}
 
 {%endblock%}
