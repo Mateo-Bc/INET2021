@@ -57,23 +57,24 @@ def HomeView(request):
 def Local_View(request, pk):
     now = datetime.datetime.now()
     local = Local.objects.get(pk = pk)
+    day = str(now.year) +"-"+ str(now.month) +"-"+ str(now.day)
 
     for i in range(24):
         try:
             hora = str(i) + ":00"
-            local.time.get(hour=hora)
+            local.time.get(hour=hora,date=day)
+
         except:
             hora = str(i) + ":00"
-            t = Time.objects.create(hour=hora, cant=0)
+            t = Time.objects.create(hour=hora, cant=0,date=day)
             local.time.add(t)
             local.save()
 
     current_hour = str(now.hour) + ":00"
-    a = local.time.get(hour=current_hour)
+    a = local.time.get(hour=current_hour,date=day)
 
     if request.method == "POST":
         cap = CalculateCap(request.POST)
-
         if "sum" in request.POST:
             if local.ac_cap < local.max_cap:
                 a.cant += 1
@@ -90,6 +91,7 @@ def Local_View(request, pk):
 
     else:
         cap = CalculateCap()
+
     context = {
         'name': local.name,
         'max_cap': local.max_cap,

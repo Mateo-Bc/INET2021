@@ -99,18 +99,20 @@
                 <div class="col 12">
                     <div id="graphics" class="col 12">
                         <div class="row">
-                            <div id="graphic1" class="col 10"><canvas id="gr"></canvas> </div>
+                            <div id="graphic1" class="col 10 "><canvas class="graphicBox" id="gr"></canvas> </div>
                         </div>
                     </div>
                 </div>
         
             </div>
         </div>
+
+        <br>
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+        
         <script>
             var ctx = document.getElementById('gr').getContext('2d');
             const labels = [{% for i in times  %} {{ i.hour.hour }}, {% endfor %}]
@@ -144,6 +146,7 @@
             };
             var myChart = new Chart(ctx,config)
         </script>
+        
 
         {% endif %}
     </div>

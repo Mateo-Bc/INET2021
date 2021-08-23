@@ -13,3 +13,6 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
         help_texts = {k:"" for k in fields}
+
+class CalculateCap(forms.Form):
+    option = forms.BooleanField(required=False)

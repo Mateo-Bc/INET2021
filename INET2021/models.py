@@ -13,6 +13,7 @@ class Manager(models.Model):
 
 class Time(models.Model):
     hour = models.TimeField(auto_created=True)
+    date = models.DateField(default=0)
     cant = models.IntegerField(default=0)
 
     def __str__(self):
