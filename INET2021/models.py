@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -18,8 +19,8 @@ class Time(models.Model):
 
 class Local(models.Model):
     name = models.CharField(max_length=100, default=None)
-    max_cap = models.IntegerField()
-    ac_cap = models.IntegerField()
+    max_cap = models.IntegerField(validators=[MinValueValidator(0)])
+    ac_cap = models.IntegerField(validators=[MinValueValidator(0)])
     address = models.CharField(max_length=100, default=None)
     manager = models.ForeignKey(Manager, on_delete= models.CASCADE,blank=True)
     time = models.ManyToManyField(Time)
@@ -30,18 +31,6 @@ class Local(models.Model):
 
     def __str__(self):
         return self.name
-
-    def triggerAdd(self):
-        if (self.ac_cap < self.max_cap):
-            self.ac_cap += 1
-
-        self.call_percentage()
-
-    def triggerRemove(self):
-        if (self.ac_cap != 0):
-            self.ac_cap -= 1
-
-        self.call_percentage()
 
 
 
