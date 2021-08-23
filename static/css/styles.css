@@ -25,6 +25,16 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+.logoutPanel{
+    width: 60%;
+    height: 100%;
+    margin-top: 10vw;
+    background-color: rgba(253, 220, 176, 0.7);
+    border: 3px solid tan;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+}
+
 .logOptions{
     margin-top: 1vw;
 }
@@ -33,14 +43,47 @@
     width: 30%;
     height: 20%;
 
-    background-color: rgba(255, 40, 40, 0.7);
-    border: 3px solid red;
+    background-color: rgba(200, 0, 0, 0.9);
+    border: 3px solid rgb(200, 0, 0);
     border-radius: 1.5vw;
 
     font-family: 'Quicksand', sans-serif;
     font-size: 100%;
-    color: red;
+    color: white;
     text-align: center;
+}
+
+.successBox{
+    width: 30%;
+    height: 20%;
+
+    background-color: rgba(0, 200, 0, 0.9);
+    border: 3px solid rgb(0, 200, 0);
+    border-radius: 1.5vw;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 100%;
+    color: white;
+    text-align: center;
+}
+
+.emergentErrorBox{
+    width: 50%;
+    height: 15vw;
+
+    background-color: rgba(200, 0, 0, 0.9);
+    border: 3px solid rgb(200, 0, 0);
+    border-radius: 1.5vw;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 100%;
+    color: white;
+    text-align: center;
+
+    z-index: 1;
+    position: absolute;
+    margin-top: -1.65%;
+
 }
 
 .searchContainer{
@@ -132,23 +175,25 @@
     transition: all .1s linear;
 }
 
-.namePanel{
+.capacityPanel{
     text-align: center;
-    size: 15%;
-    background-color: darkorange;
+    height: 15vw;
+    background-color: rgb(207, 207, 207);
+    border: 3px solid rgb(128, 128, 128);
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
 }
 
-.leftPanelgreen {
-    background-color: greenyellow;
-}
-.leftPanelorange {
-    background-color: darkorange;
-}
-.leftPanelred {
-    background-color: crimson;
+.contentBox{
+    align-items: center;
 }
 
-.rightPanel {
-    background-color: beige;
+.adsComponent{
+    width: 60%;
+    height: 25vw;
+    margin-bottom: 2%;
+    background-color: rgba(253, 220, 176, 0.7);
+    border: 2px dashed black;
+    border-radius: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
 }
-

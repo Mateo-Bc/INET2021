@@ -127,4 +127,6 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = 'homeView'
 
+LOGOUT_REDIRECT_URL = 'homeView'
+
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'

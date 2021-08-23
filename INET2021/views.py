@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 import datetime
+from django.db.models import F
 
 # Create your views here.
 
@@ -51,13 +52,13 @@ def Local_View(request, pk):
     local = Local.objects.get(pk = pk)
 
     for i in range(24):
-        print("hola")
+        """print("hola")"""
         try:
-            print("1")
+            """print("1")"""
             hora = str(i) + ":00"
             local.time.get(hour=hora)
         except:
-            print("2")
+            """print("2")"""
             hora = str(i) + ":00"
             t = Time.objects.create(hour=hora, cant=0)
             local.time.add(t)
@@ -75,6 +76,22 @@ def Local_View(request, pk):
 
     if request.method == "POST":
         cap = CalculateCap(request.POST)
+
+        if "sum" in request.POST:
+            if local.ac_cap < local.max_cap:
+                a.cant += 1
+                a.save()
+                local.ac_cap += 1
+                local.save()
+            if local.ac_cap == local.max_cap:
+                messages.warning(request, 'The store has reached its maxium capacity.')
+        
+        elif "res" in request.POST:
+            if local.ac_cap > 0:
+                local.ac_cap -= 1
+                local.save()
+
+        """
         if cap.is_valid():
             if cap.cleaned_data.get('option'):
                 if local.ac_cap < local.max_cap:
@@ -84,10 +101,15 @@ def Local_View(request, pk):
                     local.ac_cap += 1
                     local.save()
 
+                    if local.ac_cap == local.max_cap:
+                        messages.warning(request, 'The store has reached its maxium capacity.')
+
             else:
                 if local.ac_cap > 0:
                     local.ac_cap -= 1
                     local.save()
+        """
+
     else:
         cap = CalculateCap()
     context = {

@@ -2,42 +2,70 @@
 {%load static%}
 {%block content%}
 
-<div class='container'>
-    <div class="row ">
-        <div class="col-6 offset-3 align-self-center namePanel">
-            <h2>{{nomvre}}</h2>
+<div class='container-fluid searchContainer'>
+    <div class="row justify-content-center">
+            
+        <div class="col titleBox">
+            <a>{{ name }}</a>
         </div>
+
     </div>
-{{ percentage }}
-    <div class="row align-items-center">
-        {% if percentage <= 50%}
-            <div class="col-6 leftPanelgreen rounded border border-dark">
-        {% elif percentage <= 85 %}
-            <div class="col-6 leftPanelorange rounded border border-dark">
-        {% else %}
-            <div class="col-6 leftPanelred rounded border border-dark">
-        {% endif %}
-                <h1>Capacidad Actual</h1>
-                <h3 class="text-center display-2">{{ac_cap}}</h3>
+
+    <br>
+
+    <div class="row justify-content-center">
+        
+        <div class="col-5 capacityPanel">
+
+            <div class="row justify-content-center contentBox" style="height: 20%;">
+                <a class="listName">Capacidad Actual</a>
             </div>
-        <div class="col-6 rightPanel     rounded border border-dark">
-            <h1>Capacidad Máxima</h1>
-            <h3 class="text-center display-2">{{max_cap}}</h3>
+            <div class="row justify-content-center contentBox" style="height: 80%;">
+                <a class="listID">{{ ac_cap }}</a>
+            </div>
+            
         </div>
 
-    </div>
+        <div class="col-2">
+            {% if user.is_superuser %}
+            <form method="post">
+                {% csrf_token %}
+                <div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                        <button class="btn-success" type="submit" name="sum">+1</button>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <button class="btn-danger" type="submit" name="res">-1</button>
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+        </div>
 
-    <div class="row">
-        <div class="col-12 align-self-center">
-            {{nomvre}}
+        <div class="col-5 capacityPanel">
+            
+            <div class="row justify-content-center contentBox" style="height: 20%;">
+                <a class="listName">Capacidad Máxima</a>
+            </div>
+            <div class="row justify-content-center contentBox" style="height: 80%;">
+                <a class="listID">{{ max_cap }}</a>
+            </div>
+            
         </div>
     </div>
+
+    <br>
+
+    <div class="row justify-content-center">
+        <div class="col adsComponent">
+            <a>ads</a>
+            <img>
+        </div>
+    </div>
+
 </div>
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button onclick="" type="submit">SUMAR</button>
-    </form>
 
 {%endblock%}

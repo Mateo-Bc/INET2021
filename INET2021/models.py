@@ -26,7 +26,7 @@ class Local(models.Model):
 
     def call_percentage(self):
         percentage = ((self.ac_cap * 100) / self.max_cap)
-        return percentage
+        return round(percentage)
 
     def __str__(self):
         return self.name
@@ -35,13 +35,13 @@ class Local(models.Model):
         if (self.ac_cap < self.max_cap):
             self.ac_cap += 1
 
-        self.cal_percentage()
+        self.call_percentage()
 
     def triggerRemove(self):
         if (self.ac_cap != 0):
             self.ac_cap -= 1
 
-        self.cal_percentage()
+        self.call_percentage()
 
 
 

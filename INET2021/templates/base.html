@@ -28,11 +28,24 @@
         {% block script %}{% endblock %}
 
         {% if messages %}
+        <div class="row justify-content-center">
             {% for message in messages %}
-            <div style="background-color: green;">
-                {{message}}
-            </div>
+                {% if message.tags == 'success' %}
+                <div class="successBox">
+                    <a>Operation successful</a>
+                    <br>
+                    <a>{{message}}</a>
+                </div>
+                {% endif %}
+                {% if message.tags == 'warning' %}
+                <div class="container-fluid emergentErrorBox">
+                    <a class="listID">Warning !</a>
+                    <br>
+                    <a class="listName">{{message}}</a>
+                </div>
+                {% endif %}
             {% endfor %}
+        </div>
         {% endif %}
 
     </body>
