@@ -2,6 +2,32 @@
 {%load static%}
 {%block content%}
 
+<div class="container-fluid">
+    <div class="row justify-content-between logOptions">
+        <div class="col-md-auto">
+            <button onclick="location.href = '/'" class="boton btn-success">Return to Home</button>
+        </div>
+
+        <div class="row justify-content-end" style="margin-right: 0.1vw">
+            {% if request.user.is_authenticated %}
+            <div class="col-md-auto">
+                <a class="listAddress">¡Welcome back, {{user}}!</a>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="location.href = '/logout'" class="boton btn-success">Log Out</button>
+            </div>      
+            {% else %}
+            <div class="col-md-auto">
+                <button onclick="location.href = '/login'" class="boton btn-success">Log In</button>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="location.href = '/register'" class="boton btn-success">Register</button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 <div class='container-fluid searchContainer'>
     <div class="row justify-content-center">
             

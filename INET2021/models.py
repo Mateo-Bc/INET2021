@@ -22,7 +22,7 @@ class Local(models.Model):
     ac_cap = models.IntegerField()
     address = models.CharField(max_length=100, default=None)
     manager = models.ForeignKey(Manager, on_delete= models.CASCADE,blank=True)
-    time = models.ManyToManyField(Time)
+    time = models.ManyToManyField(Time,blank=True)
 
     def call_percentage(self):
         percentage = ((self.ac_cap * 100) / self.max_cap)

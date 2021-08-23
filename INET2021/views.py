@@ -5,6 +5,7 @@ from .models import *
 from .forms import *
 from django.db.models import Q
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 import datetime
 from django.db.models import F
@@ -17,6 +18,12 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
+
+            firstname = form.cleaned_data['first_name']
+            lastname = form.cleaned_data['last_name']
+            new = Manager.objects.create(first_name=firstname,last_name=lastname)
+            new.save()
+
             messages.success(request, f'Usuario {username} creado')
             return redirect('login')
     else:
@@ -123,9 +130,15 @@ def Local_View(request, pk):
     }
     return render(request, 'local_view.html' , context)
 
-def Statistics_View(request, pk):
-    local = Local.objects.get(pk = pk)
-    a = local.time.all()
+@login_required(login_url='LoginView')
+def Statistics_View(request):
+    man = Manager.objects.get(first_name=request.user.first_name)
+    local = Local.objects.filter(manager=man)
+    try:
+        a = local.time.all()
+    except:
+        nombre = "local de " + request.user.first_name
+        loc = Local.objects.create(name=nombre,max_cap=10,ac_cap=0,address="None",manager=man)
     context = {
         'times':a,
     }
