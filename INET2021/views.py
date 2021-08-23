@@ -50,14 +50,28 @@ def Local_View(request, pk):
     now = datetime.datetime.now()
     local = Local.objects.get(pk = pk)
 
+    for i in range(24):
+        print("hola")
+        try:
+            print("1")
+            hora = str(i) + ":00"
+            local.time.get(hour=hora)
+        except:
+            print("2")
+            hora = str(i) + ":00"
+            t = Time.objects.create(hour=hora, cant=0)
+            local.time.add(t)
+            local.save()
+
     current_hour = str(now.hour) + ":00"
-    try:
+    """try:
+        print(local.time.filter(hour=current_hour))
         a = local.time.get(hour=current_hour)
     except:
         t = Time.objects.create(hour=current_hour,cant=0)
         local.time.add(t)
-        local.save()
-        a = local.time.get(hour=current_hour)
+        local.save()"""
+    a = local.time.get(hour=current_hour)
 
     if request.method == "POST":
         cap = CalculateCap(request.POST)
@@ -66,6 +80,7 @@ def Local_View(request, pk):
                 if local.ac_cap < local.max_cap:
                     a.cant +=1
                     a.save()
+                    print(a.cant)
                     local.ac_cap += 1
                     local.save()
 
@@ -89,9 +104,6 @@ def Local_View(request, pk):
 def Statistics_View(request, pk):
     local = Local.objects.get(pk = pk)
     a = local.time.all()
-    for i in a:
-        print(type(i.hour.hour))
-    print(local.time.all())
     context = {
         'times':a,
     }
